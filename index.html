@@ -708,22 +708,18 @@
                       <Grid item xs={12} md={6}>
                         <Paper variant="outlined" sx={{ p: 2.5, height: '100%', bgcolor: '#f8fafc', borderColor: '#e2e8f0' }}>
                           <FormControl fullWidth>
-                            <Typography sx={{ fontWeight: 600, color: '#1e293b', mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <FormLabel sx={{ fontWeight: 600, color: '#1e293b !important', mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }}>
                               <span className="material-icons" style={{ fontSize: 20, color: '#ef4444' }}>medical_information</span>
                               กลุ่มโรคประจำตัวเรื้อรัง (Underlying Disease)
-                            </Typography>
-                            <InputLabel id="chronic-disease-label" sx={{ top: 28 }}>เลือกกลุ่มโรคประจำตัว</InputLabel>
+                            </FormLabel>
                             <Select
-                              labelId="chronic-disease-label"
                               name="chronicDisease"
                               value={formData.chronicDisease}
                               onChange={handleChange}
-                              label="เลือกกลุ่มโรคประจำตัว"
+                              displayEmpty
                               sx={{ bgcolor: 'white' }}
                             >
-                              <MenuItem value="none">
-                                <em>ไม่มีโรคประจำตัว (None)</em>
-                              </MenuItem>
+                              <MenuItem value="none">ไม่มีโรคประจำตัว (None)</MenuItem>
                               <MenuItem value="hypertension">โรคความดันโลหิตสูง (Hypertension)</MenuItem>
                               <MenuItem value="diabetes">โรคเบาหวาน (Diabetes Mellitus)</MenuItem>
                               <MenuItem value="cardiovascular">โรคหลอดเลือดหัวใจ (Cardiovascular Disease)</MenuItem>
@@ -1018,6 +1014,21 @@
                           ))}
                         </ul>
                       </Paper>
+                    </Box>
+
+                    {/* Signature block for medical records */}
+                    <Box sx={{ pt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+                      <Box sx={{ textAlign: 'center', minWidth: 220 }}>
+                        <Typography variant="body2" color="text.secondary">
+                          ลงชื่อ ...........................................................
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 0.5 }}>
+                          (เจ้าหน้าที่คัดกรอง / พยาบาลวิชาชีพ)
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          วันที่ {assessmentResult.timestamp.split(' ')[0]}
+                        </Typography>
+                      </Box>
                     </Box>
                   </Stack>
                 </DialogContent>
